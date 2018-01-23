@@ -5,7 +5,6 @@ var $pantalla2 = $('#pantalla2');
 $pantalla1.fadeOut(5000);
 $pantalla2.fadeIn(5000);
 
-
 //Después de que el usuario oprime el botón signup, pasa de pantalla 2 a pantalla 3
 var $signUp=$('#signup');
 $signUp.click(function() {
@@ -25,37 +24,48 @@ $signUp.click(function() {
         $nextBtn.attr('disabled', true);
         $nextBtn.removeClass('able');
       }
-});
+    });
+
 //Cuando el botón "next" sea oprimido se genreará un código aleatorio
 $nextBtn=$('#next-btn');
 $nextBtn.click(function(){
   //Para generar la función random
-  function getRandomInt(min, max) {
-    var random=  Math.floor(Math.random() * (max - min)) + min;
-    return random;
-  }
-  console.log(getRandomInt(100, 999));
+function getRandomInt(min, max) {
+  var random=  Math.floor(Math.random() * (max - min)) + min;
+  return random;
+}
+//console.log(getRandomInt(100, 999));
 
-  /*Para regresar el número generado por medio de DOM*/
-  //Acceder al elemento padre
-  var $contenedorRandom=$('#container-random');
-  $contenedorRandom.empty();
-  //Crear elemento con sus atributos
-  var $rnd=$('<div></div>').text(getRandomInt(100, 999));
-  var $inputCode=$('<input></input>').attr(
+/*Para regresar el número generado por medio de DOM*/
+//Acceder al elemento padre
+var $contenedorRandom=$('#container-random');
+$contenedorRandom.empty();
+//Crear elemento con sus atributos
+var $rnd=$('<div></div>').text(getRandomInt(100, 999));
+var $inputCode=$('<input></input>').attr(
                                             {'placeholder':'Ingresa el código',
                                              'maxlength': '3',
                                              'pattern':'[0-9]{2}'});
+
+var $btnCode=$('<button></button>').text('Validar').attr({'id':'btn-code',
+                                                             'class':'waves-effect grey darken-3 btn'});
 //Hacer el boton para enviar el código
-  //Agregar a DOM
-  $contenedorRandom.append($rnd);
-  $contenedorRandom.append($inputCode);
-  //Validación del código
-  if ($rnd==$inputCode) {
-    console.log('si');
-  }
-  else {
-    console.log('no');
+//Agregar a DOM
+$contenedorRandom.append($rnd);
+$contenedorRandom.append($inputCode);
+$contenedorRandom.append($btnCode);
+
+//Validación del código
+//Después de que el usuario de click en el botón de validar se debe realizar la comparación
+
+
+
+
+if ($rnd==$inputCode) {
+  console.log('si');
+}
+else {
+  console.log('no');
   }
 });
 
