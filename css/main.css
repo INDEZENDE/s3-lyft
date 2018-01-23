@@ -49,3 +49,9 @@ body {
   .select-content {
     height: 20px;
   }
+
+.container-random {
+  height: 30px;
+  background: yellow;
+  color: red;
+}

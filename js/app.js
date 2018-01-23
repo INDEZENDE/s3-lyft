@@ -26,13 +26,41 @@ $signUp.click(function() {
         $nextBtn.removeClass('able');
       }
 });
-//Para generar la función random
-// function getRandomInt(min, max) {
-//   return Math.floor(Math.random() * (max - min)) + min;
-// }
-//
-// console.log(getRandomInt(100, 999));
-//
+//Cuando el botón "next" sea oprimido se genreará un código aleatorio
+$nextBtn=$('#next-btn');
+$nextBtn.click(function(){
+  //Para generar la función random
+  function getRandomInt(min, max) {
+    var random=  Math.floor(Math.random() * (max - min)) + min;
+    return random;
+  }
+  console.log(getRandomInt(100, 999));
+
+  /*Para regresar el número generado por medio de DOM*/
+  //Acceder al elemento padre
+  var $contenedorRandom=$('#container-random');
+  $contenedorRandom.empty();
+  //Crear elemento con sus atributos
+  var $rnd=$('<div></div>').text(getRandomInt(100, 999));
+  var $inputCode=$('<input></input>').attr(
+                                            {'placeholder':'Ingresa el código',
+                                             'maxlength': '3',
+                                             'pattern':'[0-9]{2}'});
+//Hacer el boton para enviar el código
+  //Agregar a DOM
+  $contenedorRandom.append($rnd);
+  $contenedorRandom.append($inputCode);
+  //Validación del código
+  if ($rnd==$inputCode) {
+    console.log('si');
+  }
+  else {
+    console.log('no');
+  }
+});
+
+
+
 
 
 
